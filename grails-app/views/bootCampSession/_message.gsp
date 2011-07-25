@@ -1,0 +1,1 @@
+<span>Welcome ${presenter}, The session(s) you have : ${bootCampSessions }</span>
