@@ -8,7 +8,6 @@ class PresentationService {
 
 
     BootCampSession getInstance(Integer bootCampSessionId){
-        println "In service ${BootCampSession.list()}"
         return BootCampSession.findById(bootCampSessionId)
     }
 

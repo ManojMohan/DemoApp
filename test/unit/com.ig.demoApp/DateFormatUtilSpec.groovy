@@ -24,12 +24,25 @@ class DateFormatUtilSpec extends UnitSpec {
 
     def "test Get Date Object"() {
 
-        setup:
-
         when:
         Date date = DateFormatUtil.getDateObj(dateString)
 
         then:
+        date.toString() == expectedDate
+
+        where:
+
+        sno | dateString   | expectedDate
+        1   | "23-12-2011" | "Fri Dec 23 00:00:00 IST 2011"
+        2   | "12-12-2011" | "Mon Dec 12 00:00:00 IST 2011"
+    }
+
+    def "test Get Date Object Using Expect"() {
+
+        given:
+        Date date = DateFormatUtil.getDateObj(dateString)
+
+        expect:
         date.toString() == expectedDate
 
         where:

@@ -68,9 +68,10 @@ class BootCampSessionControllerSpec extends ControllerSpec {
         mockDomain(BootCampSession)
         mockDomain(Presenter)
         def presentationService = mockFor(PresentationService)
-        presentationService.demand.getInstance() {
+        presentationService.demand.getInstance() { bootCampSessionId ->
             Presenter presenter = new Presenter(name: "Manoj", age: 25, email: "manoj@intelligrape.com", password: "pass").save(flush: true)
             BootCampSession bootCampSession = new BootCampSession(presenter: presenter, name: "Unit Testing", description: "Smallest Module Level Testing").save(flush: true)
+            return bootCampSession
         }
         controller.presentationService = presentationService.createMock()
 
@@ -83,7 +84,6 @@ class BootCampSessionControllerSpec extends ControllerSpec {
         println model.toString()
         controller.flash.message == message
         model.toString() == passedModel
-        redirectArgs.action == action
 
         where:
         sno | message | id | passedModel                                                  | action

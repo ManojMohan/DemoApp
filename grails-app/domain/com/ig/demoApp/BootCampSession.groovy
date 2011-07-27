@@ -12,6 +12,6 @@ class BootCampSession {
 
 
     static constraints = {
-        presenter(nullable: false, blank: false)
+//        presenter(nullable: false, blank: false)
     }
 }

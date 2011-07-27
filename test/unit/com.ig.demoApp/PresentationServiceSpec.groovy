@@ -17,7 +17,6 @@ class PresentationServiceSpec extends UnitSpec {
         Presenter presenter = new Presenter(name: "Manoj", age: 25, email: "manoj@intelligrape.com", password: "pass").save(flush: true)
         BootCampSession bootCampSession = new BootCampSession(presenter: presenter, name: "Unit Testing", description: "Smallest Module Level Testing").save(flush: true)
         BootCampSession bootCampSessionInstance = presentationService.getInstance(bootCampSessionId)
-        println bootCampSession.id
 
         then:
         bootCampSessionInstance.toString() == value

@@ -49,8 +49,7 @@ class BootCampSessionController {
     def edit = {
         BootCampSession bootCampSessionInstance = presentationService.getInstance(params.id as int)
         if (!bootCampSessionInstance) {
-            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'bootCampSession.label', default: 'BootCampSession'), params.id])}"
-            println "Here in no instance !!"
+            flash.message = "No instance"
             redirect(action: "list")
         }
         else {

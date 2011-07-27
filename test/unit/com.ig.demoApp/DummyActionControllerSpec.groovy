@@ -16,12 +16,12 @@ class DummyActionControllerSpec extends ControllerSpec {
         Presenter presenter = new Presenter(name: "Manoj", age: 25, email: "manoj@intelligrape.com", password: "pass").save(flush: true)
         BootCampSession bootCampSession = new BootCampSession(presenter: presenter, name: "Unit Testing", description: "Smallest Module Level Testing").save(flush: true)
         mockParams.name = presentationName
-        def ab = controller.checkBootCampSessionValidityJSON()
+        controller.checkBootCampSessionValidityJSON()
 
         then:
         mockResponse.contentAsString == expectedResult
-        where:
 
+        where:
         sno << [1, 2]
         presentationName << ["Unit Testing", 'Jmeter Testing']
         expectedResult << ['{"success":true}', '{"success":false}']
